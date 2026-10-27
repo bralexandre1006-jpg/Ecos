@@ -1,0 +1,21 @@
+{
+  "appId": "be.alexandrebrun.ecos",
+  "appName": "Écos",
+  "webDir": "www",
+  "backgroundColor": "#0b1220",
+  "android": {
+    "backgroundColor": "#0b1220",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "style": "DARK",
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_ecos",
+      "iconColor": "#E8B44C"
+    }
+  }
+}
