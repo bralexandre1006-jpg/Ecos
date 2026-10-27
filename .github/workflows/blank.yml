@@ -1,0 +1,79 @@
+name: Build APK Écos
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      VERSION_CODE: ${{ github.run_number }}
+      VERSION_NAME: 1.0.${{ github.run_number }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier le mot de passe de signature
+        run: |
+          if [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "::error::Ajoute le secret KEYSTORE_PASSWORD (Settings > Secrets and variables > Actions)"
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Installer les dépendances
+        run: npm install --no-audit --no-fund
+
+      - name: Créer le projet Android
+        run: |
+          rm -rf android
+          npx cap add android
+          node scripts/patch-android.js
+
+      - name: Icônes
+        run: >
+          npx @capacitor/assets generate --android
+          --iconBackgroundColor '#dfe9f0' --iconBackgroundColorDark '#dfe9f0'
+          --splashBackgroundColor '#0b1220' --splashBackgroundColorDark '#0b1220'
+
+      - name: Synchroniser
+        run: npx cap sync android
+
+      - name: Compiler l'APK signé
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon
+
+      - name: Vérifier la signature
+        run: |
+          APK=android/app/build/outputs/apk/release/app-release.apk
+          $ANDROID_HOME/build-tools/$(ls $ANDROID_HOME/build-tools | sort -V | tail -1)/apksigner verify --print-certs "$APK" | grep "SHA-256"
+          cp "$APK" "Ecos-${VERSION_NAME}.apk"
+
+      - name: Publier l'APK (Releases)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION_NAME }}
+          name: Écos ${{ env.VERSION_NAME }}
+          files: Ecos-${{ env.VERSION_NAME }}.apk
+          make_latest: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Ecos-${{ env.VERSION_NAME }}
+          path: Ecos-${{ env.VERSION_NAME }}.apk
