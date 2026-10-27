@@ -65,7 +65,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .roundBtn svg{width:24px;height:24px}
 
 /* ---------- SCREENS ---------- */
-.screen{position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 96px) 16px calc(var(--sab) + 116px);opacity:0;visibility:hidden;transform:translate3d(24px,0,0);transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s .3s}
+.screen{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 96px) 16px calc(var(--sab) + 116px);opacity:0;visibility:hidden;transform:translate3d(24px,0,0);transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s .3s}
 .screen.active{opacity:1;visibility:visible;transform:none;transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s}
 .screen.left{transform:translate3d(-24px,0,0)}
 .screen::-webkit-scrollbar{display:none}
@@ -80,15 +80,15 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .hero{position:relative;overflow:hidden;padding:24px 22px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 9%,#121214) 0%,#121214 60%)}
 .hero .lbl{color:#b7b7c2;font-size:18px;font-weight:600}
 .money{display:flex;align-items:baseline;font-weight:800;letter-spacing:-.045em;line-height:1}
-.money .i{font-size:76px}
-.money .d{font-size:38px;color:#c9c9d2;letter-spacing:-.03em}
+.money{--mi:min(76px,19vw)}
+.money .d{color:#c9c9d2;letter-spacing:-.03em}
 .hero .money{margin:10px 0 20px}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.mini{background:rgba(255,255,255,.045);border-radius:22px;padding:16px}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.mini{background:rgba(255,255,255,.045);border-radius:22px;padding:16px;min-width:0}
 .mini .h{display:flex;align-items:center;gap:10px;color:#b7b7c2;font-size:17px;font-weight:600}
 .mini .ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center}
 .mini .ic svg{width:17px;height:17px}
-.mini .v{font-size:26px;font-weight:800;margin-top:10px;letter-spacing:-.03em;white-space:nowrap}
+.mini .v{overflow:hidden;text-overflow:ellipsis;font-size:clamp(20px,6.2vw,26px);font-weight:800;margin-top:10px;letter-spacing:-.03em;white-space:nowrap}
 .spark{display:block;width:calc(100% + 44px);margin:14px -22px 0;height:130px}
 .pulse{animation:pulse 2s ease-out infinite;transform-origin:center}
 @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
@@ -123,10 +123,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .more{width:100%;height:52px;margin-top:6px;border-radius:16px;background:var(--card2);font-size:17px;color:var(--acc2)}
 
 /* quick stats */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.qs{padding:18px 20px;display:flex;flex-direction:column;position:relative;border-radius:26px}
-.qs .k{color:#b7b7c2;font-size:18px;font-weight:600}
-.qs .v{font-size:30px;font-weight:800;letter-spacing:-.04em;margin-top:14px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.qs{padding:16px 18px;display:flex;flex-direction:column;position:relative;border-radius:26px;min-width:0}
+.qs .k{color:#b7b7c2;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.qs .v{font-size:clamp(22px,7.2vw,30px);font-weight:800;letter-spacing:-.04em;margin-top:14px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .qs .s{color:var(--muted);font-size:16px;font-weight:600;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ring{position:absolute;right:16px;top:16px;width:36px;height:36px}
 .ring circle{transition:stroke-dashoffset 1s var(--ease2)}
@@ -179,7 +179,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .switch::after{content:"";position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:#fff;transition:transform .3s var(--ease)}
 .switch.on{background:var(--acc)}
 .switch.on::after{transform:translateX(24px)}
-.timeIn{height:50px;border-radius:15px;background:var(--card2);border:1px solid var(--line);color:var(--text);font:inherit;font-size:19px;font-weight:800;padding:0 14px;color-scheme:dark;outline:none}
+.timeIn{flex:1;min-width:120px;height:50px;border-radius:15px;background:var(--card2);border:1px solid var(--line);color:var(--text);font:inherit;font-size:19px;font-weight:800;padding:0 14px;color-scheme:dark;outline:none}
 .dis{opacity:.35;pointer-events:none}
 .accents{display:flex;gap:10px;padding:6px 0 4px;flex-wrap:wrap}
 .accents button{width:42px;height:42px;border-radius:50%;border:3px solid transparent;transition:transform .25s var(--ease)}
@@ -250,9 +250,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .recapHero .emoji{font-size:62px;animation:bounceIn .8s var(--ease) both}
 @keyframes bounceIn{0%{transform:scale(0) rotate(-20deg)}60%{transform:scale(1.2) rotate(8deg)}100%{transform:none}}
 .recapHero .money{justify-content:center;margin-top:8px}
-.recapHero .money .i{font-size:60px}.recapHero .money .d{font-size:30px}
+.recapHero .money{--mi:min(60px,16vw)}
 .recapHero .msg{color:#c9c9d2;font-size:18px;font-weight:600;margin-top:12px;line-height:1.4}
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.rg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:12px}
 .rg .card{padding:16px 18px;border-radius:24px}
 .rg .k{color:var(--muted);font-size:15px;font-weight:600}
 .rg .v{font-size:24px;font-weight:800;margin:4px 0 8px;letter-spacing:-.03em}
@@ -390,7 +390,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
   <div class="secTitle">Notifications</div>
   <div class="card" style="padding:6px 20px">
     <div class="setRow"><div><div class="l">Rappel compta</div><div class="sub">Pense à noter tes dépenses</div></div><button class="switch" id="swRemind"></button></div>
-    <div class="setRow" id="remindOpts"><div class="seg small acc" id="remindFreq"><div class="knob"></div><button data-v="daily">Chaque jour</button><button data-v="weekly">Dimanche</button></div><input type="time" class="timeIn" id="remindTime"></div>
+    <div class="setRow" id="remindOpts" style="flex-wrap:wrap"><div class="seg small acc" id="remindFreq"><div class="knob"></div><button data-v="daily">Chaque jour</button><button data-v="weekly">Dimanche</button></div><input type="time" class="timeIn" id="remindTime"></div>
     <div class="setRow"><div><div class="l">Bilan du 1er du mois</div><div class="sub">Récap du mois écoulé à 9h</div></div><button class="switch" id="swRecap"></button></div>
   </div>
   <div class="secTitle">Sons et vibrations</div>
@@ -407,7 +407,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
     <button class="btn danger" id="resetBtn">Tout effacer</button>
     <input type="file" id="importFile" style="display:none">
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-top:26px">Écos · v3.1</div>
+  <div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-top:26px">Écos · v3.2</div>
 </section>
 
 <div id="navWrap">
@@ -511,8 +511,8 @@ const money=v=>fmt.format(v);
 function bigMoney(v,sign){
   const neg=v<0,parts=fmt.formatToParts(Math.abs(v));let i='',d='';
   for(const p of parts){if(p.type==='integer'||p.type==='group')i+=p.value;else d+=p.value}
-  const s=neg?'−':(sign&&v>0?'+':'');
-  return `<span class="i">${s}${i}</span><span class="d">${d}</span>`;
+  const s=neg?'−':(sign&&v>0?'+':''),L=i.replace(/\D/g,'').length,k=L<=3?1:L===4?.84:L===5?.72:.6;
+  return `<span class="i" style="font-size:calc(var(--mi) * ${k})">${s}${i}</span><span class="d" style="font-size:calc(var(--mi) * ${k} * .5)">${d}</span>`;
 }
 const MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
 const MSHORT=['janv','févr','mars','avr','mai','juin','juil','août','sept','oct','nov','déc'];
@@ -666,11 +666,11 @@ function renderQuick(){
   const f=scopeFilter(),s=sums(f),now=new Date();
   const big=db.tx.filter(t=>t.type==='expense'&&f(t)).reduce((a,t)=>!a||t.amount>a.amount?t:a,null);
   let days;if(scope==='month')days=now.getDate();else{const first=db.tx.reduce((a,t)=>!a||t.date<a?t.date:a,null);days=first?Math.max(1,Math.round((now-new Date(first+'T00:00'))/864e5)+1):1}
-  const rate=s.inc>0?Math.max(0,(s.inc-s.exp)/s.inc):0,C=2*Math.PI*18;
+  const sm=v=>Math.abs(v)>=1000?fmt0.format(v):money(v),rate=s.inc>0?Math.max(0,(s.inc-s.exp)/s.inc):0,C=2*Math.PI*18;
   $('#quick').innerHTML=`
-  <div class="card qs fadeUp"><div class="k">Épargne</div><svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle id="ringArc" cx="22" cy="22" r="18" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 22 22)"/></svg><div class="v num">${Math.round(rate*100)} %</div><div class="s">de tes entrées</div></div>
-  <div class="card qs fadeUp" style="animation-delay:40ms"><div class="k">Plus grosse</div><div class="v num">${big?money(big.amount):'—'}</div><div class="s">${big?esc(big.note||catById(big.cat).name):'aucune dépense'}</div></div>
-  <div class="card qs fadeUp" style="animation-delay:80ms"><div class="k">Par jour</div><div class="v num">${money(s.exp/days)}</div><div class="s">dépense moyenne</div></div>
+  <div class="card qs fadeUp"><div class="k" style="padding-right:40px">Épargne</div><svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle id="ringArc" cx="22" cy="22" r="18" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 22 22)"/></svg><div class="v num">${Math.round(rate*100)} %</div><div class="s">de tes entrées</div></div>
+  <div class="card qs fadeUp" style="animation-delay:40ms"><div class="k">Plus grosse</div><div class="v num">${big?sm(big.amount):'—'}</div><div class="s">${big?esc(big.note||catById(big.cat).name):'aucune dépense'}</div></div>
+  <div class="card qs fadeUp" style="animation-delay:80ms"><div class="k">Par jour</div><div class="v num">${sm(s.exp/days)}</div><div class="s">en moyenne</div></div>
   <div class="card qs fadeUp" style="animation-delay:120ms"><div class="k">Opérations</div><div class="v num">${s.n}</div><div class="s">${scope==='month'?'ce mois-ci':'au total'}</div></div>`;
   requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=$('#ringArc');if(a)a.style.strokeDashoffset=C*(1-Math.max(rate,.02))}));
 }
