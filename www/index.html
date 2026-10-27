@@ -65,7 +65,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .roundBtn svg{width:24px;height:24px}
 
 /* ---------- SCREENS ---------- */
-.screen{position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 96px) 16px calc(var(--sab) + 128px);opacity:0;visibility:hidden;transform:translate3d(24px,0,0);transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s .3s}
+.screen{position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 96px) 16px calc(var(--sab) + 116px);opacity:0;visibility:hidden;transform:translate3d(24px,0,0);transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s .3s}
 .screen.active{opacity:1;visibility:visible;transform:none;transition:opacity .22s ease,transform .3s var(--ease2),visibility 0s}
 .screen.left{transform:translate3d(-24px,0,0)}
 .screen::-webkit-scrollbar{display:none}
@@ -123,12 +123,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .more{width:100%;height:52px;margin-top:6px;border-radius:16px;background:var(--card2);font-size:17px;color:var(--acc2)}
 
 /* quick stats */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.qs{padding:20px;min-height:170px;display:flex;flex-direction:column;position:relative}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qs{padding:18px 20px;display:flex;flex-direction:column;position:relative;border-radius:26px}
 .qs .k{color:#b7b7c2;font-size:18px;font-weight:600}
-.qs .v{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-top:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qs .v{font-size:30px;font-weight:800;letter-spacing:-.04em;margin-top:14px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .qs .s{color:var(--muted);font-size:16px;font-weight:600;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ring{position:absolute;right:18px;top:18px;width:44px;height:44px}
+.ring{position:absolute;right:16px;top:16px;width:36px;height:36px}
 .ring circle{transition:stroke-dashoffset 1s var(--ease2)}
 
 /* pills */
@@ -195,14 +195,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 /* ---------- NAV ---------- */
 #navWrap{position:fixed;left:14px;right:14px;bottom:calc(var(--sab) + 14px);z-index:20;display:flex;gap:10px;align-items:center;transform:translate3d(0,170%,0);transition:transform .6s var(--ease)}
 #navWrap.show{transform:none}
-#nav{flex:1;height:84px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:30px;display:flex;align-items:center;padding:6px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.6)}
-#navKnob{position:absolute;top:6px;bottom:6px;left:6px;border-radius:24px;background:var(--card3);transition:transform .38s var(--ease)}
-.nb{flex:1;height:72px;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--muted);font-size:13px;font-weight:700;position:relative;z-index:1;transition:color .2s}
-.nb svg{width:26px;height:26px;transition:transform .3s var(--ease)}
+#nav{flex:1;height:74px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:30px;display:flex;align-items:center;padding:6px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+#navKnob{position:absolute;top:6px;bottom:6px;left:6px;border-radius:22px;background:var(--card3);transition:transform .38s var(--ease)}
+.nb{flex:1;height:62px;border-radius:22px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;position:relative;z-index:1;transition:color .2s}
+.nb svg{width:28px;height:28px;transition:transform .3s var(--ease)}
 .nb.on{color:var(--text)}
 .nb:active svg{transform:scale(.85)}
-#fab{width:84px;height:84px;border-radius:28px;background:var(--acc);color:var(--accInk);display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 55%,transparent);transition:transform .2s var(--ease)}
-#fab svg{width:34px;height:34px}
+#fab{width:74px;height:74px;border-radius:26px;background:var(--acc);color:var(--accInk);display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 55%,transparent);transition:transform .2s var(--ease)}
+#fab svg{width:32px;height:32px}
 #fab:active{transform:scale(.88)}
 
 /* ---------- SHEETS ---------- */
@@ -334,7 +334,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
   <div id="recapSlot"></div>
   <div class="gap"></div>
   <div class="card">
-    <div class="cardHead"><h3>Dépenses par catégorie</h3><div class="seg small" id="unitSeg"><div class="knob"></div><button data-v="pct" class="on">%</button><button data-v="eur">€</button></div></div>
+    <div class="cardHead"><h3>Par catégorie</h3><div class="seg small" id="unitSeg"><div class="knob"></div><button data-v="pct" class="on">%</button><button data-v="eur">€</button></div></div>
     <div id="homeCats"></div>
   </div>
   <div class="gap"></div>
@@ -407,16 +407,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
     <button class="btn danger" id="resetBtn">Tout effacer</button>
     <input type="file" id="importFile" style="display:none">
   </div>
-  <div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-top:26px">Écos · v3</div>
+  <div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-top:26px">Écos · v3.1</div>
 </section>
 
 <div id="navWrap">
   <nav id="nav">
     <div id="navKnob"></div>
-    <button class="nb on" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Accueil</button>
-    <button class="nb" data-go="hist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Historique</button>
-    <button class="nb" data-go="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V12M12 20V5M19 20v-9"/></svg>Stats</button>
-    <button class="nb" data-go="set"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Réglages</button>
+    <button class="nb on" aria-label="Accueil" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></button>
+    <button class="nb" aria-label="Historique" data-go="hist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
+    <button class="nb" aria-label="Statistiques" data-go="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V12M12 20V5M19 20v-9"/></svg></button>
+    <button class="nb" aria-label="Réglages" data-go="set"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
   </nav>
   <button id="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
 </div>
