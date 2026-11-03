@@ -43,7 +43,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;tou
 .press:active{transform:scale(.96)}
 
 /* ---------- SPLASH ---------- */
-#splash{position:fixed;inset:0;z-index:100;background:radial-gradient(90% 60% at 50% 42%,#15131f 0%,#000 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .35s ease,transform .35s ease}
+#splash{position:fixed;inset:0;z-index:100;background:radial-gradient(90% 60% at 50% 42%,#161618 0%,#000 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .35s ease,transform .35s ease}
 #splash.out{opacity:0;transform:scale(1.06);pointer-events:none}
 #splashLogo{width:170px;height:170px;position:relative}
 #splashLogo svg{width:100%;height:100%;overflow:visible}
@@ -291,7 +291,11 @@ body.lite .logoTile svg{width:28px;height:28px}
 body.lite #greet{font-size:15px}
 body.lite #htitle{font-size:30px}
 body.lite .roundBtn{width:46px;height:46px;border-radius:15px}
-body.lite .screen{padding-top:calc(var(--sat) + 80px)}
+body.lite .screen{padding-top:calc(var(--sat) + 70px)}
+body.lite #s-home{overflow:hidden;overscroll-behavior:none}
+body.lite #s-home .lite-only>.gap{height:8px}
+body.lite .tabsWrap{margin-bottom:8px}
+body.lite #hdr{padding-bottom:6px}
 body.lite .gap{height:10px}
 body.lite .hero{padding:16px 18px 0}
 body.lite .hero .lbl{font-size:16px}
@@ -447,6 +451,8 @@ body.lite #statPager .accHead{display:none}
   <defs>
     <linearGradient id="gE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6aa8"/><stop offset="1" stop-color="#1c3560"/></linearGradient>
     <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe596"/><stop offset="1" stop-color="#b8792a"/></linearGradient>
+    <linearGradient id="gEw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d4d4d8"/></linearGradient>
+    <linearGradient id="gBw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e4e7"/><stop offset="1" stop-color="#71717a"/></linearGradient>
     <g id="logoUse">
       <path fill="url(#gE)" d="M6 8 C11 8 13 11 13 16 L13 78 C13 84 10 89 6 93 L42 62 C36 63 31 66 27 70 L27 55 L56 55 L67 42 L27 42 L27 23 L64 23 L74 8 Z"/>
       <polygon fill="url(#gB)" points="12,93 23,85 23,93"/><polygon fill="url(#gB)" points="27,93 27,82 41,71 41,93"/>
@@ -458,11 +464,11 @@ body.lite #statPager .accHead{display:none}
 <div id="splash">
   <div id="splashLogo">
     <svg viewBox="0 0 100 100">
-      <g id="eShape"><path fill="url(#gE)" stroke="rgba(255,255,255,.15)" stroke-width=".6" d="M6 8 C11 8 13 11 13 16 L13 78 C13 84 10 89 6 93 L42 62 C36 63 31 66 27 70 L27 55 L56 55 L67 42 L27 42 L27 23 L64 23 L74 8 Z"/></g>
-      <polygon class="sbar" fill="url(#gB)" points="12,93 23,85 23,93"/>
-      <polygon class="sbar" fill="url(#gB)" points="27,93 27,82 41,71 41,93"/>
-      <rect class="sbar" fill="url(#gB)" x="45" y="64" width="14" height="29"/>
-      <rect class="sbar" fill="url(#gB)" x="63" y="50" width="14" height="43"/>
+      <g id="eShape"><path fill="url(#gEw)" stroke="none" stroke-width=".6" d="M6 8 C11 8 13 11 13 16 L13 78 C13 84 10 89 6 93 L42 62 C36 63 31 66 27 70 L27 55 L56 55 L67 42 L27 42 L27 23 L64 23 L74 8 Z"/></g>
+      <polygon class="sbar" fill="url(#gBw)" points="12,93 23,85 23,93"/>
+      <polygon class="sbar" fill="url(#gBw)" points="27,93 27,82 41,71 41,93"/>
+      <rect class="sbar" fill="url(#gBw)" x="45" y="64" width="14" height="29"/>
+      <rect class="sbar" fill="url(#gBw)" x="63" y="50" width="14" height="43"/>
     </svg>
     <div id="shadow"></div>
   </div>
@@ -570,7 +576,7 @@ body.lite #statPager .accHead{display:none}
     <button class="btn danger" id="resetBtn">Tout effacer</button>
     <input type="file" id="importFile" style="display:none">
   </div>
-<div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin:22px 0 4px">Écos · v6</div></div></div></div>
+<div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin:22px 0 4px">Écos · v6.1</div></div></div></div>
   </div>
 </section>
 
