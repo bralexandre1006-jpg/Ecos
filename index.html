@@ -278,18 +278,6 @@ body.lite .full-only{display:none!important}
 .accV,.chev{display:none}
 .accBody{display:grid;grid-template-rows:1fr}
 .accIn{min-width:0}
-body.lite .accGroup{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:0 18px}
-body.lite .accHead{display:flex;align-items:center;gap:10px;margin:0;min-height:54px;font-size:18px;font-weight:800;letter-spacing:-.02em;pointer-events:auto;cursor:pointer;border-top:1px solid var(--line)}
-body.lite .acc:first-child>.accHead{border-top:none}
-body.lite .accV{display:block;color:var(--muted);font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
-body.lite .accV .pill{padding:4px 10px;font-size:14px}
-body.lite .chev{display:block;width:20px;height:20px;color:var(--muted);flex-shrink:0;transition:transform .3s var(--ease2)}
-body.lite .acc.open .chev{transform:rotate(90deg)}
-body.lite .accBody{grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease2)}
-body.lite .acc.open .accBody{grid-template-rows:1fr}
-body.lite .accIn{min-height:0;overflow:hidden}
-body.lite .accIn>.card{background:none;border:none;border-radius:0;padding:0 0 12px!important}
-body.lite .accIn>.stackBtns{padding-bottom:14px}
 .accLink{color:var(--acc2);font-size:16px;font-weight:700;padding:8px 0 8px 8px}
 .kv{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;border-bottom:1px solid var(--line)}
 .kv:last-child{border-bottom:none}
@@ -404,41 +392,28 @@ body.lite .budBar{margin:8px 0 0}
 @keyframes popIn{0%{transform:scale(.7)}100%{transform:none}}
 #htitle{will-change:transform}
 
-/* ---------- v5.1 : épuré ---------- */
-.card{border-color:rgba(255,255,255,.045);box-shadow:none}
-.hero{background:radial-gradient(130% 100% at 100% 0%,color-mix(in srgb,var(--acc) 16%,transparent) 0%,transparent 60%),#0f0f11!important;border-color:rgba(255,255,255,.06)!important;box-shadow:none!important}
-.hero .lbl,.mini .h{color:var(--muted)!important;font-weight:600}
-.mini .ic{display:none!important}
-.mini .h::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
-.duo .mini:last-child .h::before{background:var(--red)}
-#heroTrend .pill,#heroTrend .pill.good,#heroTrend .pill.bad{background:none!important;padding:0;font-size:15px}
-.budBar{height:5px;background:rgba(255,255,255,.07)}
-.budTop .k{color:var(--muted)}
-.logoTile{background:none!important;border:none!important;width:auto!important;padding-right:2px}
-#greet{font-weight:600}
-body.lite .accGroup{border-color:rgba(255,255,255,.045);background:#0f0f11}
-body.lite .accHead{font-weight:700;border-top-color:rgba(255,255,255,.05)}
-body.lite .accV{font-weight:600;font-size:15px}
-body.lite .accV .pill,body.lite .accV .pill.good,body.lite .accV .pill.bad{background:none;padding:0;font-size:15px}
-.row,.swipe,.kv,.cmpRow,.setRow{border-color:rgba(255,255,255,.045)!important}
-.av{background:transparent!important;border:1.5px solid rgba(255,255,255,.08)}
-.ct{background:#17171b;border-color:transparent}
+.ct{background:#17171b}
 .ct.on{background:color-mix(in srgb,var(--acc) 14%,#17171b)}
-.ct .av{font-size:20px!important}
 .sheet .field input,.sheet .repBtn{background:#17171b}
-.ct .av{border:none}
-.seg,.period,.search{background:#0f0f11;border-color:rgba(255,255,255,.045)}
-.seg .knob{background:#1d1d22;border-color:transparent}
-.seg.acc .knob{background:var(--acc)}
-.key{background:transparent}
-.key:active{background:var(--card2)}
-.field input,.repBtn{background:#0f0f11;border-color:rgba(255,255,255,.06)}
-#nav{background:rgba(15,15,17,.96);border-color:rgba(255,255,255,.06);box-shadow:none}
-#navKnob{background:color-mix(in srgb,var(--acc) 14%,#141418)!important}
-#fab{box-shadow:0 8px 24px -8px color-mix(in srgb,var(--acc) 60%,transparent)!important}
-.pill{background:rgba(255,255,255,.05)}
-.stack{gap:3px}
-.stack i{border-radius:3px}
+/* ---------- v6 : pages ---------- */
+.tabsWrap{margin-bottom:10px}
+.pager,body.lite #statPager{display:flex;align-items:flex-start;gap:32px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 2px;scroll-padding:0 16px;scrollbar-width:none;overscroll-behavior-x:contain}
+.pager::-webkit-scrollbar,#statPager::-webkit-scrollbar{display:none}
+.pg,body.lite #statPager>.acc{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+body.lite #statPager .accHead{display:none}
+.pager .swipe{touch-action:auto}
+.kpis{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px 16px;min-width:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.kh{display:flex;align-items:center;gap:9px;color:#b7b7c2;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden}
+.kic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex-shrink:0}
+.kic svg{width:16px;height:16px}
+.kv2{font-size:clamp(20px,6vw,25px);font-weight:800;letter-spacing:-.03em;margin-top:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pgCard{padding:4px 18px!important}
+.pgTitle{display:flex;align-items:center;justify-content:space-between;font-size:18px;font-weight:800;padding:12px 0 6px}
+.pgLink{display:block;width:100%;text-align:center;color:var(--acc2);font-size:16px;font-weight:700;padding:12px 0 10px;border-top:1px solid var(--line)}
+.pgDots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.pgDots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.18);transition:width .3s var(--ease),background .3s}
+.pgDots i.on{width:18px;background:var(--acc)}
 /* lock */
 #lock{position:fixed;inset:0;z-index:98;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;transition:opacity .4s ease,transform .4s ease}
 #lock.on{display:flex}
@@ -512,7 +487,7 @@ body.lite .accV .pill,body.lite .accV .pill.good,body.lite .accV .pill.bad{backg
     <div id="budgetBox"></div>
     <svg class="spark" id="spark" viewBox="0 0 400 130" preserveAspectRatio="none"></svg>
   </div>
-  <div class="lite-only"><div class="gap"></div><div class="accGroup" data-g="home" id="homeLite"></div></div>
+  <div class="lite-only"><div class="gap"></div><div class="tabsWrap"><div class="seg" id="homeTabs"><div class="knob"></div><button data-v="0" class="on">Aperçu</button><button data-v="1">Catégories</button><button data-v="2">Récent</button></div></div><div class="pager" id="homeLite"></div></div>
   <div class="full-only">
   <div class="gap"></div>
   <div class="seg" id="scopeSeg"><div class="knob"></div><button data-v="month" class="on">Ce mois</button><button data-v="all">Depuis le début</button></div>
@@ -551,7 +526,8 @@ body.lite .accV .pill,body.lite .accV .pill.good,body.lite .accV .pill.bad{backg
   <div class="gap"></div>
   <div class="period"><button data-stat="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button><div class="lab" id="statLab"></div><button data-stat="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button></div>
   <div class="gap"></div>
-  <div class="accGroup" data-g="stats">
+  <div class="lite-only tabsWrap"><div class="seg" id="statTabs"><div class="knob"></div><button data-v="0" class="on">Résumé</button><button data-v="1">Évolution</button><button data-v="2">Sorties</button><button data-v="3">Entrées</button></div></div>
+  <div class="accGroup" data-g="stats" id="statPager">
 <div class="acc" data-k="sum"><div class="accHead" role="button"><span class="accT">Résumé</span><span class="accV" id="sumV"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div class="accBody"><div class="accIn"><div class="card" id="statCmp"></div></div></div></div>
 <div class="acc" data-k="evo"><div class="accHead t" role="button"><span class="accT"><span id="chartTitle">Évolution</span></span><span class="accV" id="evoV"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div class="accBody"><div class="accIn"><div class="card"><svg class="chart" id="chart" viewBox="0 0 340 220"></svg><div class="legend"><span><i style="background:var(--green)"></i>Entrées</span><span><i style="background:var(--red)"></i>Sorties</span></div></div></div></div></div>
 <div class="acc" data-k="exp"><div class="accHead t" role="button"><span class="accT">Sorties par catégorie</span><span class="accV" id="expV"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div class="accBody"><div class="accIn"><div class="card" id="catStats"></div></div></div></div>
@@ -564,7 +540,7 @@ body.lite .accV .pill,body.lite .accV .pill.good,body.lite .accV .pill.bad{backg
 <div class="acc" data-k="app"><div class="accHead" role="button"><span class="accT">Apparence</span><span class="accV" id="appV"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div class="accBody"><div class="accIn">  <div class="card" style="padding:6px 20px">
     <div class="setRow"><div class="l">Ton prénom</div><input class="nameIn" id="nameIn" maxlength="16" placeholder="Prénom" enterkeyhint="done"></div>
     <div class="setRow" style="flex-direction:column;align-items:flex-start"><div class="l">Couleur</div><div class="accents" id="accents"></div></div>
-    <div class="setRow"><div><div class="l">Mode lite</div><div class="sub">Interface épurée, tout sur un écran</div></div><button class="switch" id="swLite"></button></div>
+    <div class="setRow"><div><div class="l">Mode pages</div><div class="sub">Accueil et Stats en pages qui tiennent sur un écran</div></div><button class="switch" id="swLite"></button></div>
   </div>
 </div></div></div>
 <div class="acc" data-k="bud"><div class="accHead t" role="button"><span class="accT">Budget</span><span class="accV" id="budV"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div class="accBody"><div class="accIn"><div class="card" style="padding:6px 20px"><div class="setRow"><div><div class="l">Budget mensuel</div><div class="sub">Plafond de dépenses par mois</div></div><input class="nameIn" id="budgetIn" type="text" inputmode="decimal" placeholder="Aucun" maxlength="9" enterkeyhint="done" style="max-width:130px"></div></div></div></div></div>
@@ -594,7 +570,7 @@ body.lite .accV .pill,body.lite .accV .pill.good,body.lite .accV .pill.bad{backg
     <button class="btn danger" id="resetBtn">Tout effacer</button>
     <input type="file" id="importFile" style="display:none">
   </div>
-<div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin:22px 0 4px">Écos · v5.1</div></div></div></div>
+<div style="text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin:22px 0 4px">Écos · v6</div></div></div></div>
   </div>
 </section>
 
@@ -875,24 +851,28 @@ function renderHome(){
 }
 function renderHomeScoped(){renderHomeCats();renderQuick()}
 function renderHomeLite(y,m,s){
-  const now=new Date(),f=inMonth(y,m),[py,pm]=shiftMonth(y,m,-1),p=sums(inMonth(py,pm)),ly=sums(inMonth(y-1,m));
-  const {sum}=byCat(f,'expense'),ids=Object.keys(sum).sort((a,b)=>sum[b]-sum[a]),tot=ids.reduce((a,k)=>a+sum[k],0);
+  const now=new Date(),f=inMonth(y,m),[py,pm]=shiftMonth(y,m,-1),p=sums(inMonth(py,pm));
+  const {sum,cnt}=byCat(f,'expense'),ids=Object.keys(sum).sort((a,b)=>sum[b]-sum[a]),tot=ids.reduce((a,k)=>a+sum[k],0);
   const big=db.tx.filter(t=>t.type==='expense'&&f(t)).reduce((a,t)=>!a||t.amount>a.amount?t:a,null),rate=s.inc>0?Math.max(0,(s.inc-s.exp)/s.inc):0;
-  const rec=sorted().slice(0,3);
-  const H=(k,t,v)=>`<div class="accHead" role="button"><span class="accT">${t}</span><span class="accV">${v}</span>__CHEV__</div>`;
-  const A=(k,t,v,b)=>`<div class="acc" data-k="${k}">${H(k,t,v)}<div class="accBody"><div class="accIn">${b}</div></div></div>`;
-  const recB=rec.length?rec.map(txRow).join(''):`<div class="empty" style="padding:14px 0">Aucun mouvement. Appuie sur <span style="color:var(--acc2)">+</span></div>`;
-  const catB=ids.length?`<div class="stack">${ids.map((k,i)=>`<i style="flex:${sum[k]};background:${catById(k).color};animation-delay:${i*40}ms"></i>`).join('')}</div>`+ids.slice(0,4).map(k=>{const c=catById(k);return `<div class="row">${avatar(c)}<div class="mid"><div class="t1">${esc(c.name)}</div></div><div class="r num">${money(sum[k])}<small class="muted">${Math.round(sum[k]/tot*100)} %</small></div></div>`}).join('')+(ids.length>4?`<button class="kv btnRow" data-gostats>Voir tout dans Stats ›</button>`:''):`<div class="empty" style="padding:14px 0">Aucune dépense ce mois-ci.</div>`;
-  const kpiB=`<div class="kv"><span class="k">Épargne</span><span class="v num">${Math.round(rate*100)} %</span></div><div class="kv"><span class="k">Plus grosse dépense</span><span class="v num">${big?money(big.amount):'—'}</span></div><div class="kv"><span class="k">Moyenne par jour</span><span class="v num">${money(s.exp/now.getDate())}</span></div><div class="kv"><span class="k">Opérations</span><span class="v num">${s.n}</span></div>`;
-  const cmpB=`<div class="kv"><span class="k">${cap(MONTHS[pm])}</span><span class="v num">${money(p.exp)} ${pill(s.exp,p.exp,true)}</span></div><div class="kv"><span class="k">${cap(MONTHS[m])} ${y-1}</span><span class="v num">${money(ly.exp)} ${pill(s.exp,ly.exp,true)}</span></div>`+(p.n?`<button class="kv btnRow" data-recap>Bilan de ${MONTHS[pm]} ›</button>`:'');
-  const top=ids[0]?esc(catById(ids[0]).name)+' · '+Math.round(sum[ids[0]]/tot*100)+' %':'—';
-  $('#homeLite').innerHTML=(
-    A('rec','Récent','<span class="accLink" data-gohist>Tout voir</span>',recB)+
-    A('cat','Catégories',top,catB)+
-    A('kpi','Indicateurs','Épargne '+Math.round(rate*100)+' %',kpiB)+
-    A('cmp','Comparaison',pill(s.exp,p.exp,true),cmpB)).replace(/__CHEV__/g,CHEVRON);
-  applyAccOpen();
+  const svg=d=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+  const kpi=(c,ic,l,v)=>`<div class="kpi"><div class="kh"><span class="kic" style="color:${c};background:color-mix(in srgb,${c} 16%,transparent)">${svg(ic)}</span>${l}</div><div class="kv2 num">${v}</div></div>`;
+  const pg1=`<div class="kpis">${kpi('#34d399','<path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>','Épargne',Math.round(rate*100)+' %')}${kpi('#38bdf8','<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>','Par jour',money(s.exp/now.getDate()))}${kpi('#fb923c','<path d="M7 17 17 7M9 7h8v8"/>','Plus grosse',big?money(big.amount):'—')}${kpi('#a99cff','<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>','Opérations',s.n)}</div>
+   <div class="card pgCard"><div class="kv"><span class="k">vs ${MONTHS[pm]}</span><span class="v num">${money(p.exp)} ${pill(s.exp,p.exp,true)}</span></div>${p.n?`<button class="kv btnRow" data-recap>Bilan de ${MONTHS[pm]} ›</button>`:`<div class="kv"><span class="k">Moyenne / jour ${MONTHS[pm]}</span><span class="v num">—</span></div>`}</div>`;
+  const pg2=`<div class="card pgCard"><div class="pgTitle">Dépenses de ${MONTHS[m]}<span class="num" style="color:var(--muted);font-size:16px">${money(tot)}</span></div>`+(ids.length?`<div class="stack">${ids.map((k,i)=>`<i style="flex:${sum[k]};background:${catById(k).color};animation-delay:${i*40}ms"></i>`).join('')}</div>`+ids.slice(0,4).map(k=>{const c=catById(k);return `<div class="row">${avatar(c)}<div class="mid"><div class="t1">${esc(c.name)}</div><div class="t2">${cnt[k]} opération${cnt[k]>1?'s':''}</div></div><div class="r num">${money(sum[k])}<small class="muted">${Math.round(sum[k]/tot*100)} %</small></div></div>`}).join('')+`<button class="pgLink" data-gostats>Toutes les statistiques ›</button>`:`<div class="empty" style="padding:22px 0">Aucune dépense ce mois-ci.</div>`)+`</div>`;
+  const rec=sorted().slice(0,4);
+  const pg3=`<div class="card pgCard">${rec.length?rec.map(txRow).join('')+`<button class="pgLink" data-gohist>Tout l'historique ›</button>`:`<div class="empty" style="padding:22px 0">Aucun mouvement.<br>Appuie sur <span style="color:var(--acc2)">+</span> pour commencer.</div>`}</div>`;
+  const P=$('#homeLite');P.innerHTML=`<div class="pg">${pg1}</div><div class="pg">${pg2}</div><div class="pg">${pg3}</div>`;
+  requestAnimationFrame(()=>{P.scrollLeft=pgIdx.home*pageStep(P)});
 }
+const pgIdx={home:0,stats:0};
+const pageStep=P=>{const c=P.firstElementChild;return c?c.getBoundingClientRect().width+32:P.clientWidth};
+function bindPager(seg,P,key,dots){
+  const mark=i=>{if(dots)[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i))};
+  segInit(seg,v=>{pgIdx[key]=+v;mark(+v);P.scrollTo({left:+v*pageStep(P),behavior:'smooth'});if(key==='stats')setTimeout(renderStats,250)});
+  let t;P.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>{const i=Math.round(P.scrollLeft/pageStep(P));if(i!==pgIdx[key]){pgIdx[key]=i;seg._set(String(i));mark(i);fx('tap','light');if(key==='stats')renderStats()}},70)},{passive:true});
+}
+bindPager($('#homeTabs'),$('#homeLite'),'home');
+bindPager($('#statTabs'),$('#statPager'),'stats');
 const CHEVRON='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
 document.addEventListener('click',e=>{if(e.target.closest('[data-gohist]')){e.stopPropagation();go('hist')}else if(e.target.closest('[data-gostats]'))go('stats')});
 function renderHomeCats(){
@@ -1027,7 +1007,7 @@ function renderSet(){
   $('#lockNow').style.display=db.lock&&native?'':'none';
   $('#swLite').classList.toggle('on',!!db.lite);
   if(document.activeElement!==$('#budgetIn'))$('#budgetIn').value=db.budget>0?String(db.budget).replace('.',','):'';$('#budV').textContent=db.budget>0?fmt0.format(db.budget)+' / mois':'Aucun';
-  $('#appV').textContent=db.lite?'Lite':'Complet';$('#catV').textContent=db.cats.length+' catégories';
+  $('#appV').textContent=db.lite?'Pages':'Défilement';$('#catV').textContent=db.cats.length+' catégories';
   $('#secV').textContent=db.lock?'Empreinte':'Désactivée';$('#notV').textContent=db.remind.on?'Rappel '+db.remind.time:(db.recapNotif?'Bilan mensuel':'Désactivées');
   $('#sndV').textContent=[db.sound&&'Sons',db.vib&&'Vibrations'].filter(Boolean).join(' · ')||'Silencieux';
 }
@@ -1116,7 +1096,7 @@ function snack(msg,undo){const n=$('#snack');$('#snackT').textContent=msg;n.clas
   $('#snackU').onclick=()=>{n.classList.remove('on');clearTimeout(snackT);undo&&undo()};snackT=setTimeout(()=>n.classList.remove('on'),4500)}
 function delTxUndo(id){const i=db.tx.findIndex(x=>x.id===id);if(i<0)return;const t=db.tx.splice(i,1)[0];save();fx('del','heavy');render();
   snack('Mouvement supprimé',()=>{db.tx.push(t);save();render();fx('ok','success')})}
-document.addEventListener('touchstart',e=>{const w=e.target.closest('.swipe');if(!w){return}swg={w,row:w.querySelector('.row'),x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,on:false,past:false}},{passive:true});
+document.addEventListener('touchstart',e=>{const w=e.target.closest('.swipe');if(!w||w.closest('.pager'))return;swg={w,row:w.querySelector('.row'),x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,on:false,past:false}},{passive:true});
 document.addEventListener('touchmove',e=>{if(!swg)return;const dx=e.touches[0].clientX-swg.x,dy=e.touches[0].clientY-swg.y;
   if(!swg.on){if(dx<-10&&Math.abs(dx)>Math.abs(dy)*1.3){swg.on=true;swg.row.style.transition='none';swg.w.classList.add('swiping')}else if(Math.abs(dy)>10||dx>10){swg=null;return}else return}
   swg.dx=Math.min(0,dx+10);swg.row.style.transform=`translate3d(${swg.dx}px,0,0)`;
