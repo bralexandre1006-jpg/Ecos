@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Vérifier le mot de passe de signature
         run: |
@@ -25,6 +27,18 @@ jobs:
             echo "::error::Ajoute le secret KEYSTORE_PASSWORD (Settings > Secrets and variables > Actions)"
             exit 1
           fi
+
+      - name: Choisir le index.html le plus récent
+        run: |
+          # Si un index.html a été envoyé à la racine par erreur, on prend le plus récent des deux
+          if [ -f index.html ]; then
+            R=$(git log -1 --format=%ct -- index.html || echo 0)
+            W=$(git log -1 --format=%ct -- www/index.html || echo 0)
+            if [ "${R:-0}" -gt "${W:-0}" ]; then cp index.html www/index.html; echo "index.html de la racine utilisé"; fi
+          fi
+          V=$(grep -o 'Écos · v[0-9.]*' www/index.html | head -1 | sed 's/Écos · //')
+          echo "Version de l'app : $V"
+          echo "APP_VER=${V:-v?}" >> $GITHUB_ENV
 
       - uses: actions/setup-node@v4
         with:
@@ -63,17 +77,17 @@ jobs:
         run: |
           APK=android/app/build/outputs/apk/release/app-release.apk
           $ANDROID_HOME/build-tools/$(ls $ANDROID_HOME/build-tools | sort -V | tail -1)/apksigner verify --print-certs "$APK" | grep "SHA-256"
-          cp "$APK" "Ecos-${VERSION_NAME}.apk"
+          cp "$APK" "Ecos-${APP_VER}-build${{ github.run_number }}.apk"
 
       - name: Publier l'APK (Releases)
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.VERSION_NAME }}
-          name: Écos ${{ env.VERSION_NAME }}
-          files: Ecos-${{ env.VERSION_NAME }}.apk
+          name: Écos ${{ env.APP_VER }} (build ${{ github.run_number }})
+          files: Ecos-${{ env.APP_VER }}-build${{ github.run_number }}.apk
           make_latest: true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Ecos-${{ env.VERSION_NAME }}
-          path: Ecos-${{ env.VERSION_NAME }}.apk
+          name: Ecos-${{ env.APP_VER }}-build${{ github.run_number }}
+          path: Ecos-${{ env.APP_VER }}-build${{ github.run_number }}.apk
