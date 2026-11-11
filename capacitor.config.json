@@ -2,9 +2,9 @@
   "appId": "be.alexandrebrun.ecos",
   "appName": "Écos",
   "webDir": "www",
-  "backgroundColor": "#0b1220",
+  "backgroundColor": "#000000",
   "android": {
-    "backgroundColor": "#0b1220",
+    "backgroundColor": "#000000",
     "allowMixedContent": false
   },
   "plugins": {

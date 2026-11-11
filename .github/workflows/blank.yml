@@ -62,7 +62,7 @@ jobs:
         run: >
           npx @capacitor/assets generate --android
           --iconBackgroundColor '#dfe9f0' --iconBackgroundColorDark '#dfe9f0'
-          --splashBackgroundColor '#0b1220' --splashBackgroundColorDark '#0b1220'
+          --splashBackgroundColor '#000000' --splashBackgroundColorDark '#000000'
 
       - name: Synchroniser
         run: npx cap sync android

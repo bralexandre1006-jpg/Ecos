@@ -37,6 +37,20 @@ edit('android/app/src/main/AndroidManifest.xml', s => {
   return s;
 });
 
+// thème : fond noir partout (démarrage sans flash, zone de la barre de gestes)
+try {
+  const p = 'android/app/src/main/res/values/styles.xml';
+  let s = fs.readFileSync(p, 'utf8');
+  if (!s.includes('android:windowBackground'))
+    s = s.replace('<item name="android:background">@null</item>',
+      '<item name="android:background">@null</item>\n        <item name="android:windowBackground">@android:color/black</item>\n        <item name="android:navigationBarColor">@android:color/black</item>');
+  if (!s.includes('windowSplashScreenBackground'))
+    s = s.replace('<item name="android:background">@drawable/splash</item>',
+      '<item name="android:background">@drawable/splash</item>\n        <item name="windowSplashScreenBackground">@android:color/black</item>');
+  fs.writeFileSync(p, s);
+  console.log(s.includes('android:windowBackground') && s.includes('windowSplashScreenBackground') ? 'OK  ' + p : 'Thème laissé tel quel (modèle différent)');
+} catch (e) { console.log('Thème laissé tel quel : ' + e.message); }
+
 // icône de notification
 fs.mkdirSync('android/app/src/main/res/drawable', { recursive: true });
 fs.copyFileSync('assets/notif/ic_stat_ecos.png', 'android/app/src/main/res/drawable/ic_stat_ecos.png');
